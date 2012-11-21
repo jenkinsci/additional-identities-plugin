@@ -36,14 +36,14 @@ import java.util.List;
  */
 public class AdditionalIdentities extends UserProperty {
 
-    private final List<AdditionalItentity> identities;
+    private final List<AdditionalIdentity> identities;
 
     @DataBoundConstructor
-    public AdditionalIdentities(List<AdditionalItentity> identities) {
+    public AdditionalIdentities(List<AdditionalIdentity> identities) {
         this.identities = identities;
     }
 
-    public List<AdditionalItentity> getIdentities() {
+    public List<AdditionalIdentity> getIdentities() {
         return identities;
     }
 

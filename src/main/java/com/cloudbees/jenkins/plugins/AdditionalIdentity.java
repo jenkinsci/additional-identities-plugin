@@ -21,6 +21,7 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
+
 package com.cloudbees.jenkins.plugins;
 
 import org.kohsuke.stapler.DataBoundConstructor;
@@ -28,14 +29,14 @@ import org.kohsuke.stapler.DataBoundConstructor;
 /**
  * @author <a href="mailto:nicolas.deloof@gmail.com">Nicolas De Loof</a>
  */
-public class AdditionalItentity {
+public class AdditionalIdentity {
 
     final String id;
 
     final String realm;
 
     @DataBoundConstructor
-    public AdditionalItentity(String id, String realm) {
+    public AdditionalIdentity(String id, String realm) {
         this.id = id;
         this.realm = realm;
     }

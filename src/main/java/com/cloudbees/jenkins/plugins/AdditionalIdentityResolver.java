@@ -25,15 +25,20 @@
 package com.cloudbees.jenkins.plugins;
 
 import hudson.Extension;
+import hudson.init.Initializer;
 import hudson.model.User;
+import jenkins.model.Jenkins;
 
 import java.util.Map;
+
+import static hudson.init.InitMilestone.PLUGINS_STARTED;
 
 /**
  * @author <a href="mailto:nicolas.deloof@gmail.com">Nicolas De Loof</a>
  */
 @Extension
 public class AdditionalIdentityResolver extends User.CanonicalIdResolver {
+
 
 
     @Override
@@ -44,10 +49,10 @@ public class AdditionalIdentityResolver extends User.CanonicalIdResolver {
         for (User user : User.getAll()) {
             AdditionalIdentities identities = user.getProperty(AdditionalIdentities.class);
             if (identities == null) continue;
-            for (AdditionalItentity itentity : identities.getIdentities()) {
-                if (itentity.id.equals(id)) {
-                    if (realm != null && itentity.realm != null
-                        && !realm.contains(itentity.realm)) {
+            for (AdditionalIdentity identity : identities.getIdentities()) {
+                if (identity.id.equals(id)) {
+                    if (realm != null && identity.realm != null
+                        && !realm.contains(identity.realm)) {
                         // realm don't match
                         continue;
                     }
@@ -56,5 +61,10 @@ public class AdditionalIdentityResolver extends User.CanonicalIdResolver {
             }
         }
         return null;
+    }
+
+    @Initializer(before= PLUGINS_STARTED)
+    public static void addAliases() {
+        User.XSTREAM.addCompatibilityAlias("com.cloudbees.jenkins.plugins.AdditionalItentity", AdditionalIdentity.class);
     }
 }
