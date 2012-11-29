@@ -24,12 +24,15 @@
 
 package com.cloudbees.jenkins.plugins;
 
+import hudson.Extension;
+import hudson.model.AbstractDescribableImpl;
+import hudson.model.Descriptor;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
  * @author <a href="mailto:nicolas.deloof@gmail.com">Nicolas De Loof</a>
  */
-public class AdditionalIdentity {
+public class AdditionalIdentity extends AbstractDescribableImpl<AdditionalIdentity> {
 
     final String id;
 
@@ -47,6 +50,15 @@ public class AdditionalIdentity {
 
     public String getRealm() {
         return realm;
+    }
+
+    @Extension
+    public static class DescriptorImpl extends Descriptor<AdditionalIdentity> {
+
+        @Override
+        public String getDisplayName() {
+            return "Additional identity";
+        }
     }
 
 }
