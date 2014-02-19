@@ -44,7 +44,12 @@ public class AdditionalIdentityResolver extends User.CanonicalIdResolver {
     @Override
     public String resolveCanonicalId(String id, Map<String, ?> context) {
 
-        String realm = (String) context.get(User.CanonicalIdResolver.REALM);
+        String realm = null;
+
+        if (context != null)
+        {
+            realm = (String) context.get(User.CanonicalIdResolver.REALM);
+        }
 
         for (User user : User.getAll()) {
             AdditionalIdentities identities = user.getProperty(AdditionalIdentities.class);
