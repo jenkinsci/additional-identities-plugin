@@ -32,7 +32,7 @@
 
   <groupId>com.cloudbees.jenkins.plugins</groupId>
   <artifactId>additional-identities-plugin</artifactId>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.1</version>
   <packaging>hpi</packaging>
 
   <name>Additional Identities Plugin</name>
@@ -56,5 +56,6 @@
     <connection>scm:git:git@github.com:jenkinsci/additional-identities-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:jenkinsci/additional-identities-plugin.git</developerConnection>
     <url>https://github.com/jenkinsci/additional-identities-plugin</url>
+    <tag>additional-identities-plugin-1.1</tag>
   </scm>
 </project>
