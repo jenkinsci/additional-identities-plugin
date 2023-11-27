@@ -21,7 +21,7 @@
   ~  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   ~  THE SOFTWARE.
   -->
-
+<?jelly escape-by-default='true'?>
 <div>
   Additional user property for user identity on other systems. Jenkins then won't create duplicated users when such
   an identity is extracted during SCM changelog parsing, or other user-related events.
