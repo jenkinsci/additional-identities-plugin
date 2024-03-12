@@ -40,7 +40,7 @@
   <url>https://github.com/jenkinsci/${project.artifactId}</url>
 
   <scm>
-    <connection>scm:git:git@github.com:jenkinsci/${project.artifactId}.git</connection>
+    <connection>scm:git:https://github.com/jenkinsci/${project.artifactId}.git</connection>
     <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}.git</developerConnection>
     <url>https://github.com/jenkinsci/${project.artifactId}</url>
     <tag>${scmTag}</tag>
@@ -56,7 +56,8 @@
   <licenses>
     <license>
       <name>MIT</name>
-      <url>https://opensource.org/licenses/MIT</url>
+      <url>https://opensource.org/license/mit</url>
+      <distribution>repo</distribution>
     </license>
   </licenses>
 

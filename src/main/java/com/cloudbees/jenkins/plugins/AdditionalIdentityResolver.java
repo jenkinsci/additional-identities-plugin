@@ -27,7 +27,6 @@ package com.cloudbees.jenkins.plugins;
 import hudson.Extension;
 import hudson.init.Initializer;
 import hudson.model.User;
-import jenkins.model.Jenkins;
 
 import java.util.Map;
 
