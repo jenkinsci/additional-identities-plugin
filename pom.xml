@@ -33,7 +33,7 @@
 
   <groupId>com.cloudbees.jenkins.plugins</groupId>
   <artifactId>additional-identities-plugin</artifactId>
-  <version>${revision}${changelist}</version>
+  <version>${changelist}</version>
   <packaging>hpi</packaging>
 
   <name>Additional Identities Plugin</name>
@@ -61,9 +61,8 @@
   </licenses>
 
   <properties>
-    <revision>1.2</revision>
     <changelist>999999-SNAPSHOT</changelist>
-    <jenkins.version>2.387.3</jenkins.version>
+    <jenkins.version>2.426.3</jenkins.version>
   </properties>
 
   <repositories>
@@ -84,8 +83,8 @@
     <dependencies>
       <dependency>
         <groupId>io.jenkins.tools.bom</groupId>
-        <artifactId>bom-2.387.x</artifactId>
-        <version>2543.vfb_1a_5fb_9496d</version>
+        <artifactId>bom-2.426.x</artifactId>
+        <version>2884.vc36b_64ce114a_</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
