@@ -1,5 +1,9 @@
 # Additional Identities Plugin for Jenkins
 
+[![Version](https://img.shields.io/jenkins/plugin/v/additional-identities-plugin.svg)](https://plugins.jenkins.io/additional-identities-plugin)
+[![Changelog](https://img.shields.io/github/release/jenkinsci/additional-identities-plugin.svg?label=changelog)](https://github.com/jenkinsci/additional-identities-plugin/releases/latest)
+[![Installs](https://img.shields.io/jenkins/plugin/i/additional-identities-plugin.svg?color=blue)](https://plugins.jenkins.io/additional-identities-plugin)
+
 This plugin allows user to configure additional identities in jenkins
 user database for external services, typically SCM repositories.
 
@@ -55,6 +59,8 @@ git config --global user.name "Your Full Name Comes Here"
 ```
 
 ## Changelog
+
+See GitHub [Releases](https://github.com/jenkinsci/additional-identities-plugin/releases) for newer changes.
 
 ### 1.1 (Oct 20 2015)
 
