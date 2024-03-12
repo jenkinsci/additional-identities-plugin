@@ -27,12 +27,12 @@
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>1.488</version>
+    <version>4.75</version>
   </parent>
 
   <groupId>com.cloudbees.jenkins.plugins</groupId>
   <artifactId>additional-identities-plugin</artifactId>
-  <version>1.2-SNAPSHOT</version>
+  <version>${revision}${changelist}</version>
   <packaging>hpi</packaging>
 
   <name>Additional Identities Plugin</name>
@@ -41,14 +41,14 @@
   <repositories>
     <repository>
       <id>repo.jenkins-ci.org</id>
-      <url>http://repo.jenkins-ci.org/public/</url>
+      <url>https://repo.jenkins-ci.org/public/</url>
     </repository>
   </repositories>
 
   <pluginRepositories>
     <pluginRepository>
       <id>repo.jenkins-ci.org</id>
-      <url>http://repo.jenkins-ci.org/public/</url>
+      <url>https://repo.jenkins-ci.org/public/</url>
     </pluginRepository>
   </pluginRepositories>
 
@@ -58,4 +58,23 @@
     <url>https://github.com/jenkinsci/additional-identities-plugin</url>
     <tag>HEAD</tag>
   </scm>
+
+  <properties>
+    <revision>1.2</revision>
+    <changelist>-SNAPSHOT</changelist>
+    <jenkins.version>2.387.3</jenkins.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.jenkins.tools.bom</groupId>
+        <artifactId>bom-2.387.x</artifactId>
+        <version>2543.vfb_1a_5fb_9496d</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
 </project>
