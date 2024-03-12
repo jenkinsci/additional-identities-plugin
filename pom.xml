@@ -36,7 +36,7 @@
   <packaging>hpi</packaging>
 
   <name>Additional Identities Plugin</name>
-  <url>https://wiki.jenkins-ci.org/display/JENKINS/Additional+Identities+Plugin</url>
+  <url>https://github.com/jenkinsci/additional-identities-plugin</url>
 
   <repositories>
     <repository>
