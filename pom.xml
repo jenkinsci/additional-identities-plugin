@@ -27,7 +27,8 @@
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>4.75</version>
+    <version>4.79</version>
+    <relativePath/>
   </parent>
 
   <groupId>com.cloudbees.jenkins.plugins</groupId>
@@ -36,7 +37,34 @@
   <packaging>hpi</packaging>
 
   <name>Additional Identities Plugin</name>
-  <url>https://github.com/jenkinsci/additional-identities-plugin</url>
+  <url>https://github.com/jenkinsci/${project.artifactId}</url>
+
+  <scm>
+    <connection>scm:git:git@github.com:jenkinsci/${project.artifactId}.git</connection>
+    <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}.git</developerConnection>
+    <url>https://github.com/jenkinsci/${project.artifactId}</url>
+    <tag>${scmTag}</tag>
+  </scm>
+  
+  <developers>
+    <developer>
+      <id>viceice</id>
+      <name>Michael Kriese</name>
+    </developer>
+  </developers>
+
+  <licenses>
+    <license>
+      <name>MIT</name>
+      <url>https://opensource.org/licenses/MIT</url>
+    </license>
+  </licenses>
+
+  <properties>
+    <revision>1.2</revision>
+    <changelist>999999-SNAPSHOT</changelist>
+    <jenkins.version>2.387.3</jenkins.version>
+  </properties>
 
   <repositories>
     <repository>
@@ -51,19 +79,6 @@
       <url>https://repo.jenkins-ci.org/public/</url>
     </pluginRepository>
   </pluginRepositories>
-
-  <scm>
-    <connection>scm:git:git@github.com:jenkinsci/additional-identities-plugin.git</connection>
-    <developerConnection>scm:git:git@github.com:jenkinsci/additional-identities-plugin.git</developerConnection>
-    <url>https://github.com/jenkinsci/additional-identities-plugin</url>
-    <tag>HEAD</tag>
-  </scm>
-
-  <properties>
-    <revision>1.2</revision>
-    <changelist>-SNAPSHOT</changelist>
-    <jenkins.version>2.387.3</jenkins.version>
-  </properties>
 
   <dependencyManagement>
     <dependencies>
