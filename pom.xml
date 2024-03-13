@@ -45,6 +45,11 @@
     <url>https://github.com/jenkinsci/${project.artifactId}</url>
     <tag>${scmTag}</tag>
   </scm>
+
+  <issueManagement>
+    <system>Github</system>
+    <url>https://github.com/jenkinsci/additional-identities-plugin/issues</url>
+  </issueManagement>
   
   <developers>
     <developer>
