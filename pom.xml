@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
   ~ The MIT License
   ~
@@ -21,14 +22,13 @@
   ~  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   ~  THE SOFTWARE.
   -->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
     <version>4.85</version>
-    <relativePath/>
+    <relativePath />
   </parent>
 
   <groupId>com.cloudbees.jenkins.plugins</groupId>
@@ -39,25 +39,6 @@
   <name>Additional Identities Plugin</name>
   <url>https://github.com/jenkinsci/${project.artifactId}</url>
 
-  <scm>
-    <connection>scm:git:https://github.com/jenkinsci/${project.artifactId}.git</connection>
-    <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}.git</developerConnection>
-    <url>https://github.com/jenkinsci/${project.artifactId}</url>
-    <tag>${scmTag}</tag>
-  </scm>
-
-  <issueManagement>
-    <system>Github</system>
-    <url>https://github.com/jenkinsci/additional-identities-plugin/issues</url>
-  </issueManagement>
-  
-  <developers>
-    <developer>
-      <id>viceice</id>
-      <name>Michael Kriese</name>
-    </developer>
-  </developers>
-
   <licenses>
     <license>
       <name>MIT</name>
@@ -66,10 +47,42 @@
     </license>
   </licenses>
 
+  <developers>
+    <developer>
+      <id>viceice</id>
+      <name>Michael Kriese</name>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:https://github.com/jenkinsci/${project.artifactId}.git</connection>
+    <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}.git</developerConnection>
+    <tag>${scmTag}</tag>
+    <url>https://github.com/jenkinsci/${project.artifactId}</url>
+  </scm>
+
+  <issueManagement>
+    <system>Github</system>
+    <url>https://github.com/jenkinsci/additional-identities-plugin/issues</url>
+  </issueManagement>
+
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <jenkins.version>2.440.3</jenkins.version>
+    <spotless.check.skip>false</spotless.check.skip>
   </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.jenkins.tools.bom</groupId>
+        <artifactId>bom-2.440.x</artifactId>
+        <version>3180.vc1df4d5b_8097</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <repositories>
     <repository>
@@ -84,17 +97,5 @@
       <url>https://repo.jenkins-ci.org/public/</url>
     </pluginRepository>
   </pluginRepositories>
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>io.jenkins.tools.bom</groupId>
-        <artifactId>bom-2.440.x</artifactId>
-        <version>3180.vc1df4d5b_8097</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
 
 </project>

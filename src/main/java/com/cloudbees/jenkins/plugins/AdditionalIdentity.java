@@ -60,5 +60,4 @@ public class AdditionalIdentity extends AbstractDescribableImpl<AdditionalIdenti
             return "Additional identity";
         }
     }
-
 }
