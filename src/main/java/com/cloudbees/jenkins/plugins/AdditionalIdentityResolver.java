@@ -24,13 +24,12 @@
 
 package com.cloudbees.jenkins.plugins;
 
+import static hudson.init.InitMilestone.PLUGINS_STARTED;
+
 import hudson.Extension;
 import hudson.init.Initializer;
 import hudson.model.User;
-
 import java.util.Map;
-
-import static hudson.init.InitMilestone.PLUGINS_STARTED;
 
 /**
  * @author <a href="mailto:nicolas.deloof@gmail.com">Nicolas De Loof</a>
@@ -38,15 +37,12 @@ import static hudson.init.InitMilestone.PLUGINS_STARTED;
 @Extension
 public class AdditionalIdentityResolver extends User.CanonicalIdResolver {
 
-
-
     @Override
     public String resolveCanonicalId(String id, Map<String, ?> context) {
 
         String realm = null;
 
-        if (context != null)
-        {
+        if (context != null) {
             realm = (String) context.get(User.CanonicalIdResolver.REALM);
         }
 
@@ -55,8 +51,7 @@ public class AdditionalIdentityResolver extends User.CanonicalIdResolver {
             if (identities == null) continue;
             for (AdditionalIdentity identity : identities.getIdentities()) {
                 if (identity.id.equals(id)) {
-                    if (realm != null && identity.realm != null
-                        && !realm.contains(identity.realm)) {
+                    if (realm != null && identity.realm != null && !realm.contains(identity.realm)) {
                         // realm don't match
                         continue;
                     }
@@ -67,8 +62,9 @@ public class AdditionalIdentityResolver extends User.CanonicalIdResolver {
         return null;
     }
 
-    @Initializer(before= PLUGINS_STARTED)
+    @Initializer(before = PLUGINS_STARTED)
     public static void addAliases() {
-        User.XSTREAM.addCompatibilityAlias("com.cloudbees.jenkins.plugins.AdditionalItentity", AdditionalIdentity.class);
+        User.XSTREAM.addCompatibilityAlias(
+                "com.cloudbees.jenkins.plugins.AdditionalItentity", AdditionalIdentity.class);
     }
 }

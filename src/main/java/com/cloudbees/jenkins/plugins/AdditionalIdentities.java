@@ -27,9 +27,8 @@ import hudson.Extension;
 import hudson.model.User;
 import hudson.model.UserProperty;
 import hudson.model.UserPropertyDescriptor;
-import org.kohsuke.stapler.DataBoundConstructor;
-
 import java.util.List;
+import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
  * @author <a href="mailto:nicolas.deloof@gmail.com">Nicolas De Loof</a>
@@ -60,5 +59,4 @@ public class AdditionalIdentities extends UserProperty {
             return "Additional user identities";
         }
     }
-
 }
