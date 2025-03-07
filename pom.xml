@@ -47,24 +47,12 @@
     </license>
   </licenses>
 
-  <developers>
-    <developer>
-      <id>viceice</id>
-      <name>Michael Kriese</name>
-    </developer>
-  </developers>
-
   <scm>
     <connection>scm:git:https://github.com/jenkinsci/${project.artifactId}.git</connection>
     <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}.git</developerConnection>
     <tag>${scmTag}</tag>
     <url>https://github.com/jenkinsci/${project.artifactId}</url>
   </scm>
-
-  <issueManagement>
-    <system>Github</system>
-    <url>https://github.com/jenkinsci/additional-identities-plugin/issues</url>
-  </issueManagement>
 
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
