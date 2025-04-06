@@ -23,14 +23,12 @@
  */
 package com.cloudbees.jenkins.plugins;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import hudson.model.User;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -56,43 +54,43 @@ public class AdditionalIdentityResolverTest {
     @Test
     public void testResolveCanonicalIdWithoutRealm() throws IOException {
         // Create and set up identities
-        List<AdditionalIdentity> identities = new ArrayList<>();
+        var identities = new ArrayList<AdditionalIdentity>();
         identities.add(new AdditionalIdentity("github-user", "github"));
         identities.add(new AdditionalIdentity("ldap-user", "ldap"));
 
-        AdditionalIdentities userIdentities = new AdditionalIdentities(identities);
+        var userIdentities = new AdditionalIdentities(identities);
         testUser.addProperty(userIdentities);
 
         // Test resolving without realm constraint
-        String resolved = resolver.resolveCanonicalId("github-user", null);
-        assertEquals("Should resolve to the test user ID", testUser.getId(), resolved);
+        var resolved = resolver.resolveCanonicalId("github-user", null);
+        assertEquals(testUser.getId(), resolved, "Should resolve to the test user ID");
 
         // Test with non-existent ID
-        assertNull("Non-existent ID should resolve to null", resolver.resolveCanonicalId("non-existent", null));
+        assertNull(resolver.resolveCanonicalId("non-existent", null), "Non-existent ID should resolve to null");
     }
 
     @Test
     public void testResolveCanonicalIdWithRealm() throws IOException {
         // Create and set up identities
-        List<AdditionalIdentity> identities = new ArrayList<>();
+        var identities = new ArrayList<AdditionalIdentity>();
         identities.add(new AdditionalIdentity("github-user", "github"));
         identities.add(new AdditionalIdentity("ldap-user", "ldap"));
 
-        AdditionalIdentities userIdentities = new AdditionalIdentities(identities);
+        var userIdentities = new AdditionalIdentities(identities);
         testUser.addProperty(userIdentities);
 
         // Create realm context
-        Map<String, Object> context = new HashMap<>();
+        var context = new HashMap<String, Object>();
         context.put(User.CanonicalIdResolver.REALM, "github");
 
         // Test resolving with matching realm
-        String resolved = resolver.resolveCanonicalId("github-user", context);
-        assertEquals("Should resolve to the test user ID with matching realm", testUser.getId(), resolved);
+        var resolved = resolver.resolveCanonicalId("github-user", context);
+        assertEquals(testUser.getId(), resolved, "Should resolve to the test user ID with matching realm");
 
         // Test resolving with non-matching realm
         context.put(User.CanonicalIdResolver.REALM, "bitbucket");
         resolved = resolver.resolveCanonicalId("github-user", context);
-        assertNull("Should not resolve with non-matching realm", resolved);
+        assertNull(resolved, "Should not resolve with non-matching realm");
     }
 
     @Test

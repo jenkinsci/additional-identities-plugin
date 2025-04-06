@@ -23,14 +23,12 @@
  */
 package com.cloudbees.jenkins.plugins;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import hudson.model.User;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -62,13 +60,13 @@ public class AdditionalIdentitiesIntegrationTest {
         bob = User.getById("bob", true);
 
         // Configure Alice with GitHub and LDAP identities
-        List<AdditionalIdentity> aliceIdentities = new ArrayList<>();
+        var aliceIdentities = new ArrayList<AdditionalIdentity>();
         aliceIdentities.add(new AdditionalIdentity("alice.smith", "github"));
         aliceIdentities.add(new AdditionalIdentity("asmith", "ldap"));
         alice.addProperty(new AdditionalIdentities(aliceIdentities));
 
         // Configure Bob with Bitbucket and JIRA identities
-        List<AdditionalIdentity> bobIdentities = new ArrayList<>();
+        var bobIdentities = new ArrayList<AdditionalIdentity>();
         bobIdentities.add(new AdditionalIdentity("bob.jones", "bitbucket"));
         bobIdentities.add(new AdditionalIdentity("bjones", "jira"));
         bob.addProperty(new AdditionalIdentities(bobIdentities));
@@ -77,69 +75,69 @@ public class AdditionalIdentitiesIntegrationTest {
     @Test
     public void testMultipleUsersWithIdentities() throws IOException {
         // Test GitHub identity for Alice
-        Map<String, Object> githubContext = new HashMap<>();
+        var githubContext = new HashMap<String, Object>();
         githubContext.put(User.CanonicalIdResolver.REALM, "github");
-        String resolved = resolver.resolveCanonicalId("alice.smith", githubContext);
-        assertEquals("Alice should be identified by her GitHub identity", alice.getId(), resolved);
+        var resolved = resolver.resolveCanonicalId("alice.smith", githubContext);
+        assertEquals(alice.getId(), resolved, "Alice should be identified by her GitHub identity");
 
         // Test LDAP identity for Alice
-        Map<String, Object> ldapContext = new HashMap<>();
+        var ldapContext = new HashMap<String, Object>();
         ldapContext.put(User.CanonicalIdResolver.REALM, "ldap");
         resolved = resolver.resolveCanonicalId("asmith", ldapContext);
-        assertEquals("Alice should be identified by her LDAP identity", alice.getId(), resolved);
+        assertEquals(alice.getId(), resolved, "Alice should be identified by her LDAP identity");
 
         // Test Bitbucket identity for Bob
-        Map<String, Object> bitbucketContext = new HashMap<>();
+        var bitbucketContext = new HashMap<String, Object>();
         bitbucketContext.put(User.CanonicalIdResolver.REALM, "bitbucket");
         resolved = resolver.resolveCanonicalId("bob.jones", bitbucketContext);
-        assertEquals("Bob should be identified by his Bitbucket identity", bob.getId(), resolved);
+        assertEquals(bob.getId(), resolved, "Bob should be identified by his Bitbucket identity");
     }
 
     @Test
     public void testResolvingWithoutRealm() throws IOException {
         // All identities should resolve without a realm constraint
         assertEquals(
-                "Should resolve Alice by GitHub ID without realm",
                 alice.getId(),
-                resolver.resolveCanonicalId("alice.smith", null));
+                resolver.resolveCanonicalId("alice.smith", null),
+                "Should resolve Alice by GitHub ID without realm");
         assertEquals(
-                "Should resolve Alice by LDAP ID without realm",
                 alice.getId(),
-                resolver.resolveCanonicalId("asmith", null));
+                resolver.resolveCanonicalId("asmith", null),
+                "Should resolve Alice by LDAP ID without realm");
         assertEquals(
-                "Should resolve Bob by Bitbucket ID without realm",
                 bob.getId(),
-                resolver.resolveCanonicalId("bob.jones", null));
+                resolver.resolveCanonicalId("bob.jones", null),
+                "Should resolve Bob by Bitbucket ID without realm");
         assertEquals(
-                "Should resolve Bob by JIRA ID without realm",
                 bob.getId(),
-                resolver.resolveCanonicalId("bjones", null));
+                resolver.resolveCanonicalId("bjones", null),
+                "Should resolve Bob by JIRA ID without realm");
     }
 
     @Test
     public void testRealmConstraints() throws IOException {
         // Try to resolve Alice's GitHub identity with LDAP realm - should fail
-        Map<String, Object> ldapContext = new HashMap<>();
+        var ldapContext = new HashMap<String, Object>();
         ldapContext.put(User.CanonicalIdResolver.REALM, "ldap");
-        String resolved = resolver.resolveCanonicalId("alice.smith", ldapContext);
-        assertNull("Alice's GitHub identity should not resolve in LDAP realm", resolved);
+        var resolved = resolver.resolveCanonicalId("alice.smith", ldapContext);
+        assertNull(resolved, "Alice's GitHub identity should not resolve in LDAP realm");
 
         // Try to resolve Bob's JIRA identity with GitHub realm - should fail
-        Map<String, Object> githubContext = new HashMap<>();
+        var githubContext = new HashMap<String, Object>();
         githubContext.put(User.CanonicalIdResolver.REALM, "github");
         resolved = resolver.resolveCanonicalId("bjones", githubContext);
-        assertNull("Bob's JIRA identity should not resolve in GitHub realm", resolved);
+        assertNull(resolved, "Bob's JIRA identity should not resolve in GitHub realm");
     }
 
     @Test
     public void testNonExistentIdentities() throws IOException {
         // Try to resolve identities that don't exist
-        assertNull("Non-existent identity should not resolve", resolver.resolveCanonicalId("nonexistent", null));
+        assertNull(resolver.resolveCanonicalId("nonexistent", null), "Non-existent identity should not resolve");
 
-        Map<String, Object> githubContext = new HashMap<>();
+        var githubContext = new HashMap<String, Object>();
         githubContext.put(User.CanonicalIdResolver.REALM, "github");
         assertNull(
-                "Non-existent identity should not resolve even with realm",
-                resolver.resolveCanonicalId("nonexistent", githubContext));
+                resolver.resolveCanonicalId("nonexistent", githubContext),
+                "Non-existent identity should not resolve even with realm");
     }
 }

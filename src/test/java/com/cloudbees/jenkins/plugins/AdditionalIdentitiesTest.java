@@ -23,12 +23,11 @@
  */
 package com.cloudbees.jenkins.plugins;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import hudson.model.User;
 import java.util.ArrayList;
-import java.util.List;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests for the {@link AdditionalIdentities} class.
@@ -37,29 +36,26 @@ public class AdditionalIdentitiesTest {
 
     @Test
     public void testConstructorAndGetters() {
-        List<AdditionalIdentity> identityList = new ArrayList<>();
+        var identityList = new ArrayList<AdditionalIdentity>();
         identityList.add(new AdditionalIdentity("user1", "ldap"));
         identityList.add(new AdditionalIdentity("user2", "github"));
 
-        AdditionalIdentities identities = new AdditionalIdentities(identityList);
+        var identities = new AdditionalIdentities(identityList);
 
         assertEquals(
-                "getIdentities() should return the list passed to the constructor",
                 identityList,
-                identities.getIdentities());
-        assertEquals(
-                "Identities list should have the correct size",
-                2,
-                identities.getIdentities().size());
+                identities.getIdentities(),
+                "getIdentities() should return the list passed to the constructor");
+        assertEquals(2, identities.getIdentities().size(), "Identities list should have the correct size");
     }
 
     @Test
     public void testDescriptor() {
-        AdditionalIdentities.DescriptorImpl descriptor = new AdditionalIdentities.DescriptorImpl();
+        var descriptor = new AdditionalIdentities.DescriptorImpl();
         assertEquals(
-                "Descriptor should have correct display name",
                 "Additional user identities",
-                descriptor.getDisplayName());
-        assertNull("newInstance should return null", descriptor.newInstance((User) null));
+                descriptor.getDisplayName(),
+                "Descriptor should have correct display name");
+        assertNull(descriptor.newInstance((User) null), "newInstance should return null");
     }
 }

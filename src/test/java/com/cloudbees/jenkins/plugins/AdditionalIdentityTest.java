@@ -23,9 +23,9 @@
  */
 package com.cloudbees.jenkins.plugins;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests for the {@link AdditionalIdentity} class.
@@ -37,15 +37,15 @@ public class AdditionalIdentityTest {
         String testId = "test-user";
         String testRealm = "ldap";
 
-        AdditionalIdentity identity = new AdditionalIdentity(testId, testRealm);
+        var identity = new AdditionalIdentity(testId, testRealm);
 
-        assertEquals("getId() should return the correct ID", testId, identity.getId());
-        assertEquals("getRealm() should return the correct realm", testRealm, identity.getRealm());
+        assertEquals(testId, identity.getId(), "getId() should return the correct ID");
+        assertEquals(testRealm, identity.getRealm(), "getRealm() should return the correct realm");
     }
 
     @Test
     public void testDescriptor() {
-        AdditionalIdentity.DescriptorImpl descriptor = new AdditionalIdentity.DescriptorImpl();
-        assertEquals("Descriptor should have correct display name", "Additional identity", descriptor.getDisplayName());
+        var descriptor = new AdditionalIdentity.DescriptorImpl();
+        assertEquals("Additional identity", descriptor.getDisplayName(), "Descriptor should have correct display name");
     }
 }
