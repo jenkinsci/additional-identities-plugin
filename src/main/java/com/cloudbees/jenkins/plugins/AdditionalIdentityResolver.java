@@ -47,7 +47,7 @@ public class AdditionalIdentityResolver extends User.CanonicalIdResolver {
         }
 
         for (User user : User.getAll()) {
-            AdditionalIdentities identities = user.getProperty(AdditionalIdentities.class);
+            var identities = user.getProperty(AdditionalIdentities.class);
             if (identities == null) continue;
             for (AdditionalIdentity identity : identities.getIdentities()) {
                 if (identity.id.equals(id)) {
