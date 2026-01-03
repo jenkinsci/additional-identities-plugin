@@ -20,6 +20,27 @@ Jenkins 1.480 introduces an extension point to resolve jenkins user
 This plugin uses this extension point to let user configure external
 identities as user properties.
 
+## Use Cases
+
+The Additional Identities Plugin is useful in environments where Jenkins
+needs to associate multiple external identities with a single Jenkins user.
+
+Common use cases include:
+
+- Jenkins instances integrated with multiple SCM systems (e.g. Git, SVN),
+  where commit authors may use different usernames or email addresses.
+- Organizations migrating repositories or SCM providers while preserving
+  historical attribution of commits and build contributions.
+- Environments where users authenticate to Jenkins with one identity
+  but commit to repositories using another (e.g. corporate SSO vs. SCM accounts).
+- Improving traceability and auditability by correctly mapping external
+  contributor identities to Jenkins users.
+
+From a security and governance perspective, this helps avoid user duplication
+and ensures that actions and contributions are consistently attributed
+to the correct Jenkins account.
+
+
 ## Usage
 
 On my Jenkins instance, I'm authenticated as "nicolas". As I want to use
