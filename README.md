@@ -1,7 +1,7 @@
 # Additional Identities Plugin for Jenkins
 
-[![Build Status](https://ci.jenkins.io/job/Plugins/job/additional-identities-plugin/job/main/badge/icon)](https://ci.jenkins.io/job/Plugins/job/additional-identities-plugin/job/main)
-[![Coverage](https://ci.jenkins.io/job/Plugins/job/additional-identities-plugin/job/main/badge/icon?status=${instructionCoverage}&subject=coverage&color=${colorInstructionCoverage})](https://ci.jenkins.io/job/Plugins/job/additional-identities-plugin/job/main/coverage)
+[![Build Status](https://ci.jenkins.io/buildStatus/icon?job=Plugins%2Fadditional-identities-plugin%2Fmain)](https://ci.jenkins.io/job/Plugins/job/additional-identities-plugin/job/main)
+[![Coverage](https://ci.jenkins.io/buildStatus/icon?job=Plugins%2Fadditional-identities-plugin%2Fmain&subject=coverage&status=%24%7BinstructionCoverage%7D&color=%24%7BcolorInstructionCoverage%7D)](https://ci.jenkins.io/job/Plugins/job/additional-identities-plugin/job/main/coverage)
 [![Version](https://img.shields.io/jenkins/plugin/v/additional-identities-plugin.svg)](https://plugins.jenkins.io/additional-identities-plugin)
 [![Changelog](https://img.shields.io/github/release/jenkinsci/additional-identities-plugin.svg?label=changelog)](https://github.com/jenkinsci/additional-identities-plugin/releases/latest)
 [![Installs](https://img.shields.io/jenkins/plugin/i/additional-identities-plugin.svg?color=blue)](https://plugins.jenkins.io/additional-identities-plugin)
